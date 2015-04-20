@@ -19,8 +19,8 @@ import fr.uha.ensisa.anass.Jump.Framework.Point2D;
 public class Map {
 	private final int tileWidth;
 	private final int tileHeight;
-	private Bitmap tileSet;
-	private Bitmap chouk;
+	private static Bitmap tileSet;
+	private static Bitmap chouk;
 	private int nbTilesX;
 	private int nbTilesY;
 	private Rect destRect;
