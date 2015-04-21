@@ -95,26 +95,26 @@ public class GamePanel extends SurfaceView implements Callback {
 
 	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		int action = event.getAction();
-
-		if (action == MotionEvent.ACTION_DOWN) {
-			System.out.println("Down");
-			game.touchEvent_actionDown(event);
-		}
-
-		if (action == MotionEvent.ACTION_MOVE) {
-			System.out.println("Move");
-			game.touchEvent_actionMove(event);
-		}
-
-		if (action == MotionEvent.ACTION_UP) {
-			System.out.println("Up");
-			game.touchEvent_actionUp(event);
-		}
-
-		return true;
-	}
+//	@Override
+//	public boolean onTouchEvent(MotionEvent event) {
+//		int action = event.getAction();
+//
+//		if (action == MotionEvent.ACTION_DOWN) {
+//			System.out.println("Down");
+//			game.touchEvent_actionDown(event);
+//		}
+//
+//		if (action == MotionEvent.ACTION_MOVE) {
+//			System.out.println("Move");
+//			game.touchEvent_actionMove(event);
+//		}
+//
+//		if (action == MotionEvent.ACTION_UP) {
+//			System.out.println("Up");
+//			game.touchEvent_actionUp(event);
+//		}
+//
+//		return true;
+//	}
 
 }

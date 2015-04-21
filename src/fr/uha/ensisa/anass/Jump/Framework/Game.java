@@ -21,27 +21,28 @@ public class Game {
 	private Bitmap background;
 	
 	private Level lvl;
+	public static ResourceProvider resourceProvider;
 
 	public Game(Resources resources) {
 		
 		this.Initialize(resources);
 
-		this.LoadContent(resources);
+		this.LoadContent();
 
 		this.ResetGame();
 	}
 	
 	private void Initialize(Resources resources){
-		
-		lvl = new Level(resources);
+		resourceProvider = new ResourceProvider(resources);
+		lvl = new Level();
 		destBackgroundImage = new Rect(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
 	}
 
 	/**
 	 * Load files.
 	 */
-	private void LoadContent(Resources resources) {
-		background = BitmapFactory.decodeResource(resources, R.drawable.backgound);
+	private void LoadContent() {
+		background = Game.resourceProvider.getImage(R.drawable.backgound);
 	}
 
 	/**
@@ -85,33 +86,36 @@ public class Game {
 		
 	}
 
-	/**
-	 * When touch on screen is detected.
-	 * 
-	 * @param event
-	 *            MotionEvent
-	 */
-	public void touchEvent_actionDown(MotionEvent event) {
-
+	public static void startMoveLeft() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * When moving on screen is detected.
-	 * 
-	 * @param event
-	 *            MotionEvent
-	 */
-	public void touchEvent_actionMove(MotionEvent event) {
-
+	public static void stopMoveLeft() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * When touch on screen is released.
-	 * 
-	 * @param event
-	 *            MotionEvent
-	 */
-	public void touchEvent_actionUp(MotionEvent event) {
-
+	public static void startMoveRight() {
+		// TODO Auto-generated method stub
+		
 	}
+
+	public static void stopMoveRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void startMoveUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void stopMoveUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 }

@@ -53,9 +53,9 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction() == MotionEvent.ACTION_DOWN)
-					System.out.println("LeftDown");
+					Game.startMoveLeft();
 				if(event.getAction() == MotionEvent.ACTION_UP)
-					System.out.println("LeftUp");
+					Game.stopMoveLeft();
 				return true;
 			}
 		});
@@ -64,8 +64,11 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				System.out.println("Right");
-				return false;
+				if(event.getAction() == MotionEvent.ACTION_DOWN)
+					Game.startMoveRight();
+				if(event.getAction() == MotionEvent.ACTION_UP)
+					Game.stopMoveRight();
+				return true;
 			}
 		});
 		ImageView ivu = (ImageView) fl.findViewById(R.id.ivUpArrow);
@@ -74,9 +77,9 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction() == MotionEvent.ACTION_DOWN)
-					System.out.println("UpDown");
+					Game.startMoveUp();
 				if(event.getAction() == MotionEvent.ACTION_UP)
-					System.out.println("UpUp");
+					Game.stopMoveUp();
 				return true;
 			}
 		});

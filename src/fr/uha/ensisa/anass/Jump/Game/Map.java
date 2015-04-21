@@ -12,6 +12,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.util.Log;
 import fr.uha.ensisa.anass.Jump.R;
+import fr.uha.ensisa.anass.Jump.Framework.Game;
 import fr.uha.ensisa.anass.Jump.Framework.GamePanel;
 import fr.uha.ensisa.anass.Jump.Framework.Point2D;
 
@@ -29,10 +30,10 @@ public class Map {
 
 
 
-	public Map(Resources resources) {
-		tileSet = BitmapFactory.decodeResource(resources, R.drawable.square);
-		chouk = BitmapFactory.decodeResource(resources, R.drawable.chook);
-		this.loadMapFile(resources);
+	public Map() {
+		tileSet = Game.resourceProvider.getImage(R.drawable.square);
+		chouk = Game.resourceProvider.getImage(R.drawable.chook);
+		this.loadMapFile();
 		Log.e("tilex", nbTilesX+"");
 		Log.e("tiley", nbTilesY+"");
 		tileWidth = GamePanel.screenWidth / nbTilesX;
@@ -40,10 +41,10 @@ public class Map {
 		destRect = new Rect();
 	}
 
-	public void loadMapFile(Resources resources)  {
+	public void loadMapFile()  {
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader( new InputStreamReader(resources.getAssets().open("maps/lvl1.txt")) );
+			reader = new BufferedReader( new InputStreamReader(Game.resourceProvider.getFile("maps/lvl1.txt")));
 		
 		String line = null;
 		String[] parts = null;

@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 
 public class Level {
-	//private Avatar avatar;
+	private Avatar avatar;
 	private Map map;
 	//private Cannon cannon;
 	//private Door exitDoor;
@@ -12,17 +12,17 @@ public class Level {
 	
 	private boolean completed;
 
-	public Level(Resources resources) {
+	public Level() {
 		completed = false;
-		//avatar = new Avatar();
-		map = new Map(resources);
+		avatar = new Avatar();
+		map = new Map();
 		//cannon = new Cannon();
 		//exitDoor = new Door(742, 312);
 		//movingSquares = new MovingSquares(map.getMovingSqaures());
 	}
 
 	public void upDate(long gameTime) {
-		//avatar.update(map);
+		avatar.update(map);
 		//avatar.move();
 		//exitDoor.update(this, avatar);
 		//cannon.update(avatar, map);
@@ -34,7 +34,7 @@ public class Level {
 		//exitDoor.draw(g2d);
 		//cannon.draw(g2d);
 		//movingSquares.draw(g2d);
-		//avatar.draw(g2d);
+		avatar.draw(canvas);
 	}
 
 	public void restart(){
