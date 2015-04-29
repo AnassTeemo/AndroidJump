@@ -3,8 +3,12 @@ package fr.uha.ensisa.anass.Jump.Game;
 import fr.uha.ensisa.anass.Jump.R;
 import fr.uha.ensisa.anass.Jump.Framework.Animation;
 import fr.uha.ensisa.anass.Jump.Framework.Game;
+import fr.uha.ensisa.anass.Jump.Framework.InputHundler;
+import fr.uha.ensisa.anass.Jump.Framework.KeyState;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.util.Log;
 
 public class Avatar {
 	private final int WIDTH = 18;
@@ -32,6 +36,7 @@ public class Avatar {
 	 * image of the Avatar.
 	 */
 	private Bitmap avatar_image;
+	private Rect destRect;
 
 
 	public Avatar() {
@@ -42,12 +47,13 @@ public class Avatar {
 	private void initialize() {
 		avatar_image = null;
 		x = 180;
-		y = 320;
+		y = 324;
 		speedX = 0;
 		speedY = 0;
 		jumpcount = 0;
 		canjump = true;
 		isDead = false;
+		destRect = new Rect();
 
 	}
 
@@ -58,20 +64,20 @@ public class Avatar {
 	}
 
 	public void draw(Canvas canvas) {
-
-		canvas.drawBitmap(avatar_image, (int) x, (int) (y), null);
+		destRect.set((int)this.x, (int)this.y, (int)(this.x+this.WIDTH),(int)( this.y+this.HEIGHT));
+		canvas.drawBitmap(avatar_image, null,this.destRect,null);
 
 	}
 
-	/**
-	 * Here we move the avatar.
-	 */
+	
+	
 	public void update(Map map) {
+		
 		speedX = 0;
 		// speedY = 0;
-		str = "STOPED";
-		if (Canvas.keyboardKeyState(KeyEvent.VK_RIGHT)) {
-			str = "RIGHT";
+		
+		if (InputHundler.KeyRight == KeyState.DOWN) {
+			
 			int uptile = map.getrightUptiletype(x, y + 3);
 			int downtile = map.getrightDowntiletype(x, y - 2);
 
@@ -80,12 +86,12 @@ public class Avatar {
 			// TODO 7eyd else
 			else if (uptile == 2 || downtile == 2)
 				isDead = true;
-			previous = "R";
+			
 
 		}
 
-		if (Canvas.keyboardKeyState(KeyEvent.VK_LEFT)) {
-			str = "LEFT";
+		if (InputHundler.KeyLeft == KeyState.DOWN) {
+			
 			int uptile = map.getleftUptiletype(x, y + 3);
 			int downtile = map.getleftDowntiletype(x, y - 2);
 
@@ -94,7 +100,7 @@ public class Avatar {
 			// TODO 7eyd else
 			else if (uptile == 2 || downtile == 2)
 				isDead = true;
-			previous = "L";
+			
 		}
 
 		int ldowntile = map.getleftDowntiletype(x + 2, y);
@@ -112,8 +118,8 @@ public class Avatar {
 		else if (ldowntile == 2 || rdowntile == 2)
 			isDead = true;
 
-		if (Canvas.keyboardKeyState(KeyEvent.VK_UP)) {
-			str = "JUMP";
+		if (InputHundler.KeyUp == KeyState.DOWN) {
+			
 
 			if (canjump && jumpcount == 0) {
 				speedY = -6.0f;
@@ -153,15 +159,51 @@ public class Avatar {
 			}
 		}
 
-		avatar_annim_R.changeCoordinates((int) x, (int) y);
-		avatar_annim_L.changeCoordinates((int) x, (int) y);
-
+		move();
 	}
 
 	public void move() {
 		x += speedX;
 		y += speedY;
 
+	}
+	
+	public  void startMoveLeft() {
+		// TODO Auto-generated method stub
+		speedX = speedX - 1.0f;
+//		if(speedX < -4)
+//			speedX = -5;
+		Log.e("Mvt", "start left, speedX="+speedX);
+	}
+
+	public  void stopMoveLeft() {
+		// TODO Auto-generated method stub
+		speedX = 0;
+		Log.e("Mvt", "stop left");
+	}
+
+	public  void startMoveRight() {
+		// TODO Auto-generated method stub
+//		speedX += 0.2f;
+//		if(speedX > 4)
+			speedX = 5;
+		Log.e("Mvt", "start right");
+	}
+
+	public  void stopMoveRight() {
+		// TODO Auto-generated method stub
+		speedX = 0;
+		Log.e("Mvt", "stop right");
+	}
+
+	public  void startMoveUp() {
+		// TODO Auto-generated method stub
+		Log.e("Mvt", "start up");
+	}
+
+	public  void stopMoveUp() {
+		// TODO Auto-generated method stub
+		Log.e("Mvt", "stop up");
 	}
 
 	public float getX() {

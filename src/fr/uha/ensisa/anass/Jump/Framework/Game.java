@@ -86,36 +86,6 @@ public class Game {
 		
 	}
 
-	public static void startMoveLeft() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void stopMoveLeft() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void startMoveRight() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void stopMoveRight() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void startMoveUp() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void stopMoveUp() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 	
 }

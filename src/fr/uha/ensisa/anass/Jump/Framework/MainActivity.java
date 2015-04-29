@@ -22,10 +22,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import fr.uha.ensisa.anass.Jump.R;
+import fr.uha.ensisa.anass.Jump.Game.Avatar;
 
 public class MainActivity extends Activity {
 
 	private LayoutInflater layoutinflater;
+	private  InputHundler inputhundler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,50 +50,15 @@ public class MainActivity extends Activity {
 		sv.setLayoutParams(new RelativeLayout.LayoutParams(size.x, (int) (size.y*0.85)));
 		//ll.setLayoutParams(new FrameLayout.LayoutParams(size.x, (int) (size.y*0.15)));
 		ImageView ivl = (ImageView) fl.findViewById(R.id.ivLeftArrow);
-		ivl.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction() == MotionEvent.ACTION_DOWN)
-					Game.startMoveLeft();
-				if(event.getAction() == MotionEvent.ACTION_UP)
-					Game.stopMoveLeft();
-				return true;
-			}
-		});
 		ImageView ivr = (ImageView) fl.findViewById(R.id.ivRightArrow);
-		ivr.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction() == MotionEvent.ACTION_DOWN)
-					Game.startMoveRight();
-				if(event.getAction() == MotionEvent.ACTION_UP)
-					Game.stopMoveRight();
-				return true;
-			}
-		});
 		ImageView ivu = (ImageView) fl.findViewById(R.id.ivUpArrow);
-		ivu.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction() == MotionEvent.ACTION_DOWN)
-					Game.startMoveUp();
-				if(event.getAction() == MotionEvent.ACTION_UP)
-					Game.stopMoveUp();
-				return true;
-			}
-		});
+		
+		inputhundler = new InputHundler(ivl, ivr, ivu);
+
 		
 		setContentView(fl);
 		
-	}
-	
-	
-	
-	
-	
+	}	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

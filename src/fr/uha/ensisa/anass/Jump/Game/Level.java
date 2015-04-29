@@ -1,5 +1,6 @@
 package fr.uha.ensisa.anass.Jump.Game;
 
+import fr.uha.ensisa.anass.Jump.Framework.MainActivity;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 
@@ -23,7 +24,6 @@ public class Level {
 
 	public void upDate(long gameTime) {
 		avatar.update(map);
-		//avatar.move();
 		//exitDoor.update(this, avatar);
 		//cannon.update(avatar, map);
 		//movingSquares.update(avatar, map ,gameTime);
